@@ -1,24 +1,24 @@
-var gulp = require('gulp'), // Подключаем Gulp
-    sass = require('gulp-sass'), //Подключаем Sass пакет,
-    browserSync = require('browser-sync').create(), // Подключаем Browser Sync
-    jade = require('gulp-jade'); // Подключаем jade
-concat = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
-    uglify = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
-    rename = require('gulp-rename'), // Подключаем библиотеку для переименования файлов
-    del = require('del'), // Подключаем библиотеку для удаления файлов и папок
-    imagemin = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
-    pngquant = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
-    spritesmith = require('gulp.spritesmith'), // Подключаем библиотеку для создания png-спрайтов
-    svgstore = require('gulp-svgstore'),//// Подключаем библиотеку для объединения SVG в один файл
-    svgmin = require('gulp-svgmin'),//Подключаем библиотеку для минификации SVG
-    cache = require('gulp-cache'), // Подключаем библиотеку кеширования
-    sourcemaps = require('gulp-sourcemaps'),//Подключаем плагин, записывающий карту источника в исходный файл
-    rimraf = require('rimraf'),//Очищает указанные исходники
-    plumber = require('gulp-plumber');//Подключаем плагин, который не останавливает задачи от остановки во время их выполнения при возникновении ошибки
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    browserSync = require('browser-sync').create(),
+    jade = require('gulp-jade');
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglifyjs'),
+    rename = require('gulp-rename'),
+    del = require('del'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    spritesmith = require('gulp.spritesmith'),
+    svgstore = require('gulp-svgstore'),
+    svgmin = require('gulp-svgmin'),
+    cache = require('gulp-cache'),
+    sourcemaps = require('gulp-sourcemaps'),
+    rimraf = require('rimraf'),
+    plumber = require('gulp-plumber');
 
-var postcss = require('gulp-postcss'),//Блиотека-парсер стилей для работы с postcss-плагинами
-    autoprefixer = require('autoprefixer'),// Подключаем библиотеку для автоматического добавления префиксов
-    cssnano = require('cssnano'),//postcss-плагин, для минификации CSS кода, идущего на продакшен.
+var postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
+    cssnano = require('cssnano'),
     short = require('postcss-short'),
     stylefmt = require('stylefmt'),
     assets = require('postcss-assets'),
@@ -27,41 +27,22 @@ var postcss = require('gulp-postcss'),//Блиотека-парсер стиле
     fixes = require('postcss-fixes');
 
 /*css-libs*/
-gulp.task('css-libs', function () { // Создаем таск css-libs
+gulp.task('css-libs', function () {
     var processors = [
         cssnano
     ]
     return gulp.src([
         'app/libs/**/*.css'
-    ]) // Берем источник
-        .pipe(postcss(processors))// сжымаем
-        .pipe(concat('libs.min.css'))// объеденяем в файл
-        .pipe(gulp.dest('./public/css')) // Выгружаем результата в папку app/css
-        .pipe(browserSync.stream({})); // Обновляем CSS на странице при изменении
+    ])
+        .pipe(postcss(processors))
+        .pipe(concat('libs.min.css'))
+        .pipe(gulp.dest('./public/css'))
+        .pipe(browserSync.stream({}));
 });
 
-// /*png-sprite*/
-// gulp.task('png-sprite', function () {// PNG Sprites
-//     var spriteData =
-//         gulp.src('app/img/sprites/*.*')// путь, откуда берем картинки для спрайта
-//             .pipe(spritesmith({
-//                 imgName: 'sprite.png',//имя генерируемой картинки
-//                 cssName: '_png-sprite.sass',//имя css файла, который получится на выходе
-//                 cssFormat: 'sass',//формат css файла
-//                 algorithm: 'binary-tree',//способ сортировки изображений
-//                 cssTemplate: 'sass.template.mustache',//функция или путь до mustache шаблона, дающие возможность настроить CSS-файл на выходе
-//                 cssVarMap: function (sprite) {//цикл, настраивающий названия CSS переменных
-//                     sprite.name = 's-' + sprite.name
-//                 }
-//             }));
-//
-//     spriteData.img.pipe(gulp.dest('./public/img/sprites/'));// путь, куда сохраняем картинку
-//     spriteData.css.pipe(gulp.dest('app/sass/libs/'));// путь, куда сохраняем стили
-// });
-
 /*sass*/
-gulp.task('sass', function () { // Создаем таск Sass
-    var processors = [// подключаем постпроцессоры в массиве
+gulp.task('sass', function () {
+    var processors = [
         assets,
         short,
         fontmagic,
@@ -89,43 +70,32 @@ gulp.task('sass', function () { // Создаем таск Sass
 });
 
 /*browser-sync*/
-gulp.task('browser-sync', function () { // Создаем таск browser-sync
-    browserSync.init({ // Выполняем browserSync
+gulp.task('browser-sync', function () {
+    browserSync.init({
         server: {
-            baseDir: './public' // Директория для сервера - app
+            baseDir: './public'
         },
         ghostMode: {
             clicks: true,
             forms: true,
             scroll: true
         },
-        notify: false // Отключаем уведомления
+        notify: false
     });
 });
 
-/*vendor*/
-gulp.task('vendor', ['clean'], function () {
-    return gulp.src('app/js-libs/plugins/*.js')// Берем все необходимые библиотеки
-        .pipe(plumber())
-        .pipe(concat('vendor.js'))// Собираем их в кучу в новом файле vendor.js
-        .pipe(rename({}))
-        .pipe(uglify()) // Сжимаем JS файл
-        .pipe(plumber.stop())
-        .pipe(gulp.dest('./public/js'));// Выгружаем в папку js
-});
-
 /*compress*/
-gulp.task('compress', ['clean'], function () {// Создаем таск compress
-    return gulp.src('app/js/*.js')// Берем все необходимые библиотеки
+gulp.task('compress', ['clean'], function () {
+    return gulp.src('app/js/*.js')
         .pipe(plumber())
-        .pipe(concat('script.js'))// Собираем их в кучу в новом файле script.js
+        .pipe(concat('script.js'))
         .pipe(rename({
-            suffix: ".min",// Добавляем суффикс .min
-            extname: ".js"// Добавляем окончание .js
+            suffix: ".min",
+            extname: ".js"
         }))
-        .pipe(uglify()) // Сжимаем JS файл
+        .pipe(uglify())
         .pipe(plumber.stop())
-        .pipe(gulp.dest('./public/js'))// Выгружаем в папку js
+        .pipe(gulp.dest('./public/js'))
         .pipe(browserSync.stream({}));
 
 });
@@ -153,14 +123,13 @@ gulp.task('jade', function () {
         .pipe(browserSync.stream({}));
 });
 
-gulp.task('watch', ['compress', 'jade', 'css-libs', 'img', 'sass', 'vendor', 'fonts'], function () {
-    gulp.watch('app/libs/**/*', ['css-libs']); // Наблюдение за папкой libs
-    gulp.watch('app/img/**/*', ['img']);// Наблюдение за папкой img
-    gulp.watch('app/sass/**/*.scss', ['sass']); // Наблюдение за sass файлами в папке sass
-    gulp.watch('app/js-libs/plugins/**/*.js', ['vendor']); // Наблюдение за js файлами в папке js-libs
-    gulp.watch(['app/template/**/*.jade'], ['jade']);// Наблюдение за HTML-файлами в папке html
-    gulp.watch('app/js/**/*.js', ['compress']); // Наблюдение за js-файлами
-    gulp.watch('app/fonts/**/*', ['fonts']); // Наблюдение за js-файлами
+gulp.task('watch', ['compress', 'jade', 'css-libs', 'img', 'sass', 'fonts'], function () {
+    gulp.watch('app/libs/**/*', ['css-libs']);
+    gulp.watch('app/img/**/*', ['img']);
+    gulp.watch('app/sass/**/*.scss', ['sass']);
+    gulp.watch(['app/template/**/*.jade'], ['jade']);
+    gulp.watch('app/js/**/*.js', ['compress']);
+    gulp.watch('app/fonts/**/*', ['fonts']);
 });
 
 /*img */
@@ -185,5 +154,3 @@ gulp.task('clear', function (callback) {
 });
 
 gulp.task('default', ['watch', 'browser-sync']);
-
-/*npm i gulp gulp-sass browser-sync gulp-jade gulp-concat gulp-uglifyjs gulp-rename del gulp-imagemin imagemin-pngquant pngquant-bin gulp.spritesmith gulp-svgstore gulp-svgmin gulp-cache gulp-sourcemaps rimraf gulp-plumber gulp-postcss autoprefixer cssnano postcss-short stylefmt postcss-assets postcss-sorting postcss-font-magician postcss-fixes --save-dev*/
