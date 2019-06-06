@@ -3,9 +3,9 @@ footer.footer
         .row
             .footer__wrapper
                 .footer__element
-                    ul
-                        li
-                            | Каталог
+                    h3.footer__list--title
+                        | Каталог
+                    ul.footer__list
                         li
                             a(href="#")
                                 | Черные Converse
@@ -31,9 +31,9 @@ footer.footer
                             a(href="#")
                                 | Коричневые кеды Converse
                 .footer__element
-                    ul
-                        li
-                            | О компании
+                    h3.footer__list--title
+                        | О компании
+                    ul.footer__list
                         li
                             a(href="#")
                                 | Вопросы и ответы
@@ -56,16 +56,30 @@ footer.footer
                             a(href="#")
                                 | Карта сайта
                 .footer__element
-                    h3
+                    h3.footer__list--title
                         | Способы оплаты
 
-                    .footer__paymen
+                    .footer__payment
                         .footer__type.footer__type--visa
                         .footer__type.footer__type--master
                         .footer__type.footer__type--ya
 
                     p
                         | Вы можете оплатить покупки
+                        br
                         | наличными при получении, либо
-                        a(href="#")
-                            | выбрать другой способ оплаты.
+                        br
+                        | выбрать
+                        a(href="#").footer__element--underline другой способ оплаты.
+
+                .footer__element
+                    h3.footer__list--title
+                        | Наши контакты
+                    p
+                        | Тел.:
+                        a(href="tel:+84951205032")  8 (495) 120-50-32
+                        br
+                        | Москва, Кутузовский пр-т, 36, стр. 41
+                        br
+                        | Почта:
+                        a(href="mailto:info@proox.ru")  info@proox.ru

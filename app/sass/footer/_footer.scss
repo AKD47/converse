@@ -1,3 +1,130 @@
 .footer {
   background-color: #1d1d1d;
+  padding: 45px 0;
+  @include box-sizing(border-box);
+
+  .row {
+    @include breakpoint(max-width 660px) {
+      margin: 0;
+    }
+  }
+
+  &__wrapper {
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    width: 100%;
+  }
+
+  &__element {
+    position: relative;
+    float: left;
+    width: 25%;
+
+    @include breakpoint(max-width 990px) {
+      width: 50%;
+    }
+
+    @include breakpoint(max-width 660px) {
+      width: 100%;
+    }
+
+    p {
+      margin-top: 0;
+      color: white;
+      font-family: $ML;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+
+      a {
+        color: white;
+      }
+    }
+
+    &--underline {
+      text-decoration: underline;
+    }
+  }
+
+  &__element:nth-of-type(2) {
+
+    .footer__list {
+      @include breakpoint(max-width 660px) {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+      }
+    }
+  }
+
+  &__list {
+    position: relative;
+    margin: 0;
+    margin-bottom: 45px;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoint(max-width 990px) {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+    }
+
+    &--title {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: white;
+      font-family: $Lisa;
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    li {
+      width: 100%;
+
+      a {
+        color: white;
+        font-family: $ML;
+        font-size: 12px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  &__payment {
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    width: 100%;
+  }
+
+  &__type {    
+    width: 70px;
+    height: 44px;
+    background-color: white;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    
+    &--visa {
+      background-image: url('../img/icons/visa-icon.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &--master {
+      background-image: url('../img/icons/master-icon.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &--ya {
+      background-image: url('../img/icons/y-icon.png');
+      background-repeat: no-repeat;
+      background-position: 9px 8px;
+    }
+  }
 }
