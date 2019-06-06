@@ -1,0 +1,29 @@
+.aria {
+  position: relative;
+  float: left;
+  width: 100%;
+
+  &__map {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    background-image: url('../img/map-dt.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    
+    @include breakpoint(max-width 990px) {
+      height: 470px;
+      overflow: hidden;
+      background-image: url('../img/map-tb.png');
+    }
+
+    @include breakpoint(max-width 660px) {
+      height: 240px;
+      overflow: hidden;
+      background-image: url('../img/map-mob.png');
+    }
+  }
+}

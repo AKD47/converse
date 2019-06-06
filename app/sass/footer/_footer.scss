@@ -1,4 +1,7 @@
 .footer {
+  position: relative;
+  float: left;
+  width: 100%;
   background-color: #1d1d1d;
   padding: 45px 0;
   @include box-sizing(border-box);
