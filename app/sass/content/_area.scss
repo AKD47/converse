@@ -4,6 +4,12 @@
   width: 100%;
   background-color: #f3f3f3;
 
+  .row {
+    @include breakpoint(max-width 660px) {
+      margin: 0;
+    }
+  }
+
   &__map {
     position: relative;
     float: left;
@@ -14,6 +20,7 @@
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
+    background-color: #1d1d1d;
     
     @include breakpoint(max-width 990px) {
       height: 470px;
