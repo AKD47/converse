@@ -1,3 +1,28 @@
+// Tabs
+window.addEventListener('load', function() {
+    var myTabs = document.querySelectorAll('ul.about__tabs > li');
+    function myTabClicks(tabClickEvent) {
+        for (var i = 0; i < myTabs.length; i++) {
+            myTabs[i].classList.remove('about__tabs--active');
+        }
+        var clickedTab = tabClickEvent.currentTarget;
+        clickedTab.classList.add('about__tabs--active');
+        tabClickEvent.preventDefault();
+        var myContentPanes = document.querySelectorAll('.about__pane');
+        for (i = 0; i < myContentPanes.length; i++) {
+            myContentPanes[i].classList.remove('about__pane--active');
+        }
+        var anchorReference = tabClickEvent.target;
+        var activePaneId = anchorReference.getAttribute('href');
+        var activePane = document.querySelector(activePaneId);
+        activePane.classList.add('about__pane--active');
+    }
+    for (i = 0; i < myTabs.length; i++) {
+        myTabs[i].addEventListener('click', myTabClicks);
+    }
+});
+
+//Map
 var map;
 
 function initMap() {

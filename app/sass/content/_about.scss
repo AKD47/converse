@@ -4,6 +4,7 @@
   width: 100%;
   background-color: #f3f3f3;
   padding: 45px 0;
+  overflow: hidden;
 
   .row {
     @include breakpoint(max-width 660px) {
@@ -55,12 +56,172 @@
     float: left;
     width: 40px;
     height: 30px;
-    margin-left: calc(50% - (40px/2));
+    margin-left: calc(50% - (40px / 2));
 
     > img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+  }
+
+  &__car {
+    display: block;
+    position: absolute;
+    width: 70%;
+    overflow: hidden;
+    right: 0;
+    top: 15%;
+
+    @include breakpoint(max-width 990px) {
+      width: 100%;
+      right: -70%;
+    }
+
+    @include breakpoint(max-width 660px) {
+      position: relative;
+      width: 100%;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      order: 2;
+    }
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__tabs {
+    @include display-flex(flex);
+    @include flex-direction(row);
+    @include justify-content(flex-end);
+    width: 100%;
+    margin-top: -51px;
+    margin-bottom: -18px;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoint(max-width 990px) {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      @include justify-content(flex-start);
+    }
+
+    li {
+      display: block;
+      width: 157px;
+      height: 70px;
+      margin: 0 15px;
+
+      @include breakpoint(max-width 990px) {
+        margin-left: 0;
+      }
+
+      a {
+        display: block;
+        position: relative;
+        padding: 24px 30px;
+        @include box-sizing(border-box);
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        background-color: #fff;
+        text-transform: uppercase;
+        color: rgba(29, 29, 29, 0.5);
+        font-family: $Lisa;
+        font-size: 16px;
+
+        &:hover {
+          background-color: #ff4343;
+          color: white;
+
+          &:after {
+            background-image: url('../img/icons/mapmarker-hover-icon.png');
+          }
+        }
+
+        &:after {
+          display: block;
+          position: absolute;
+          content: '';
+          top: 26px;
+          right: 26px;
+          width: 14px;
+          height: 18px;
+          overflow: hidden;
+          background-image: url('../img/icons/mapmarker-icon.png');
+          background-repeat: no-repeat;
+          -webkit-background-size: contain;
+          background-size: contain;
+        }
+      }
+
+      &.about__tabs--active {
+
+        a {
+          background-color: #ff4343;
+          color: white;
+
+          &:after {
+            background-image: url('../img/icons/mapmarker-hover-icon.png');
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    position: relative;
+    float: left;
+
+    @include breakpoint(max-width 990px) {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+  }
+
+  &__pane {
+    display: none;
+
+    &.about__pane--active {
+      display: block;
+    }
+  }
+
+  &__descr {
+    position: relative;
+    float: left;
+    width: 100%;
+
+    ul {
+      margin: 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    &--short {
+      color: #1d1d1d;
+      font-size: 14px;
+      width: 35%;
+      margin-top: 35px;
+      margin-bottom: 0;
+
+      @include breakpoint(max-width 990px) {
+        width: 70%;
+      }
+    }
+
+    &--b {
+      font-weight: 600;
+    }
+
+    &--l {
+      font-weight: 400;
     }
   }
 }
