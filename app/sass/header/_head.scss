@@ -108,7 +108,7 @@
       background-size: 100%;
     }
   }
-  
+
   &__bottom {
     position: relative;
     float: left;
@@ -139,9 +139,32 @@
     padding: 0;
     list-style: none;
 
+    @include breakpoint(max-width 660px) {
+      opacity: 0;
+      left: -188px;
+      position: absolute;
+      top: 81px;
+      width: 50%;
+      background-color: #1d1d1d;
+      z-index: 1;
+      @include transition(0.4s);
+
+      &.header__menu--show {
+        left: 0;
+        opacity: 1;
+        @include transition(0.4s);
+        z-index: 2;
+      }
+    }
+
     li {
       height: 100%;
       margin-right: 60px;
+
+      @include breakpoint(max-width 660px) {
+        width: 100%;
+        margin-right: 0;
+      }
 
       a {
         @include display-flex(flex);
@@ -155,11 +178,46 @@
         font-family: $Lisa;
         text-transform: uppercase;
 
+        @include breakpoint(max-width 660px) {
+          width: 100%;
+          text-align: center;
+          padding: 15px 0;
+          @include justify-content(center);
+        }
+
         &:hover {
           background-color: #272727;
           color: #fff;
         }
       }
+    }
+  }
+
+  &__trigger {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 30px 10px;
+
+    @include breakpoint(max-width 660px) {
+      display: block;
+    }
+
+    &--icon {
+      display: block;
+      position: relative;
+      float: left;
+    }
+
+    &--descr {
+      display: block;
+      position: relative;
+      float: left;
+      margin-left: 15px;
+      color: white;
+      font-family: $Lisa;
+      font-size: 16px;
+      text-transform: uppercase;
     }
   }
 
@@ -187,7 +245,7 @@
       @include breakpoint(max-width 990px) {
         width: 60px;
       }
-      
+
       &:hover {
         background-color: #272727;
         color: #fff;
@@ -228,6 +286,30 @@
 
       @include breakpoint(max-width 990px) {
         display: none;
+      }
+    }
+
+    &--counter {
+      display: none;
+      position: absolute;
+      max-width: 35px;
+      margin-top: -4px;
+      margin-left: 7px;
+      color: white;
+      font-size: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: #dd4545;
+      border: 2px solid #2b2b2b;
+      border-radius: 50%;
+      padding: 1px 5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      @include breakpoint(max-width 990px) {
+        display: block;
       }
     }
   }

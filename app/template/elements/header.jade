@@ -17,12 +17,12 @@ header.header
     .header__bottom
         .container
             .row
-                nav.header__navigation
+                nav#header-navigation.header__navigation
 
-                    a#mobile-menu.header__trigger
-                        span
-                        span
-                        span
+                    a(href='#')#mobile-trigger.header__trigger
+                        span.header__trigger--icon
+                            img(src='img/icons/burger-icon.png')
+                        span.header__trigger--descr меню
 
                     - var list = ['СКИДКИ ДО 60%', 'МУЖЧИНАМ', 'ЖЕНЩИНАМ', 'ДЕТЯМ', 'НОВИНКИ'];
                     - var link = ['#', '#', '#', '#', '#'];
@@ -35,10 +35,14 @@ header.header
                     a(href="#").header__tools--link
                         span.header__tools--icon
                             img(src='img/icons/heart-icon.png')
+                        span.header__tools--counter
+                            | 1
                         span.header__tools--descr
                             | Избранное: 1 товар
                     a(href="#").header__tools--link
                         span.header__tools--icon
                             img(src='img/icons/bag-icon.png')
+                        span.header__tools--counter
+                            | 0
                         span.header__tools--descr
                             | корзина: 0 товаров

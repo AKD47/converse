@@ -1,5 +1,5 @@
 mixin top-menu(options_list, ref_list)
-    ul.header__nav
+    ul#main-menu.header__nav
         for option, index in options_list
             li
                 a(href=ref_list[index])=option

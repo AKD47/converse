@@ -1,6 +1,29 @@
+// Mobile Menu
+var burger = document.getElementById('mobile-trigger');
+var menu = document.getElementById('main-menu');
+burger.onclick = function (event) {
+    event.preventDefault();
+    if (this.classList.contains('header__trigger--active')) {
+        this.classList.remove('header__trigger--active');
+        menu.classList.remove('header__menu--show');
+    } else {
+        this.classList.add('header__trigger--active');
+        menu.classList.add('header__menu--show');
+    }
+};
+document.addEventListener('click', function(event) {
+    var headerNav = document.getElementById('header-navigation');
+    var isClickInside = headerNav.contains(event.target);
+    if (!isClickInside) {
+        burger.classList.remove('header__trigger--active');
+        menu.classList.remove('header__menu--show');
+    }
+});
+
 // Tabs
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     var myTabs = document.querySelectorAll('ul.about__tabs > li');
+
     function myTabClicks(tabClickEvent) {
         for (var i = 0; i < myTabs.length; i++) {
             myTabs[i].classList.remove('about__tabs--active');
@@ -17,6 +40,7 @@ window.addEventListener('load', function() {
         var activePane = document.querySelector(activePaneId);
         activePane.classList.add('about__pane--active');
     }
+
     for (i = 0; i < myTabs.length; i++) {
         myTabs[i].addEventListener('click', myTabClicks);
     }
@@ -63,4 +87,4 @@ function initMap() {
         map: map,
         icon: '../img/map-g-marker.png'
     });
-}
+};
