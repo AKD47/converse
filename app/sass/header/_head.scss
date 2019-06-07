@@ -1,0 +1,111 @@
+.header {
+  width: 100%;
+  position: relative;
+  float: left;
+
+  &__top {
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    @include align-items(center);
+    width: 100%;
+    padding: 35px 0;
+    @include box-sizing(border-box);
+
+    @include breakpoint(max-width 990px) {
+      padding: 25px 0;
+    }
+
+    @include breakpoint(max-width 660px) {
+      @include justify-content(center);
+    }
+  }
+
+  &__logo {
+    display: block;
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 23px;
+    overflow: hidden;
+
+    @include breakpoint(max-width 990px) {
+      width: 160px;
+      height: 19px;
+    }
+
+    > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__links {
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(center);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoint(max-width 660px) {
+      display: none;
+    }
+
+    li {
+      margin: 0 25px;
+
+      a {
+        display: block;
+        position: relative;
+        float: left;
+        width: 100%;
+        color: #1d1d1d;
+        font-family: $ML;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        @include breakpoint(max-width 990px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  &__phone {
+    position: relative;
+    float: left;
+    color: #1d1d1d;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    @include breakpoint(max-width 990px) {
+      display: none;
+    }
+
+    &:hover, &:active {
+      color: #1d1d1d;
+    }
+
+    &:before {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 12px;
+      height: 12px;
+      left: -22px;
+      top: 4px;
+      overflow: hidden;
+      background-image: url('../img/icons/phone-icon.png');
+      background-repeat: no-repeat;
+      -webkit-background-size: 100%;
+      background-size: 100%;
+    }
+  }
+}

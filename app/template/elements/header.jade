@@ -1,8 +1,19 @@
 header.header
     .container
-
-        a(href="/").header__logo
-
+        .row
+            .header__top
+                a(href="/").header__logo
+                    img(src='img/top-logo.png' alt='Logo')
+                ul.header__links
+                    li
+                        a(href='#') Доставка  и оплата
+                    li
+                        a(href='#') Обмен и возврат
+                    li
+                        a(href='#') Блог
+                    li
+                        a(href='#') контакты
+                a(href='tel:+84951205032').header__phone 8(495)120-50-32
         nav.header__navigation
 
             a#mobile-menu.header__trigger

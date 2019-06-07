@@ -16,7 +16,17 @@
   <body>
     <!--top menu nixin-->
     <header class="header">
-      <div class="container"><a href="/" class="header__logo"></a>
+      <div class="container">
+        <div class="row">
+          <div class="header__top"><a href="/" class="header__logo"><img src="img/top-logo.png" alt="Logo"></a>
+            <ul class="header__links">
+              <li><a href="#">Доставка  и оплата</a></li>
+              <li><a href="#">Обмен и возврат</a></li>
+              <li><a href="#">Блог</a></li>
+              <li><a href="#">контакты</a></li>
+            </ul><a href="tel:+84951205032" class="header__phone">8(495)120-50-32</a>
+          </div>
+        </div>
         <nav class="header__navigation"><a id="mobile-menu" class="header__trigger"><span></span><span></span><span></span></a>
           <!--    вызов миксина в переменную 'list' с указаним элементов массива(названий страниц)-->
               <!--задаем параметр подписи(options_list) для опций и параметры для пути ссылок(ref_list)-->
