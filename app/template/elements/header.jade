@@ -14,14 +14,31 @@ header.header
                     li
                         a(href='#') контакты
                 a(href='tel:+84951205032').header__phone 8(495)120-50-32
-        nav.header__navigation
+    .header__bottom
+        .container
+            .row
+                nav.header__navigation
 
-            a#mobile-menu.header__trigger
-                span
-                span
-                span
+                    a#mobile-menu.header__trigger
+                        span
+                        span
+                        span
 
-            //    вызов миксина в переменную 'list' с указаним элементов массива(названий страниц)
-            - var list = ['главнаЯ', 'КЕЙСЫ', 'СИСТЕМЫ', 'УСЛУГИ', 'ТЕМЫ', 'МЫ', 'ПАРТНЕРЫ', 'КОНТАКТЫ'];
-            - var link = ['/', '#', '#', '#', '#', '#', '#', '#'];
-                +top-menu(list, link)
+                    - var list = ['СКИДКИ ДО 60%', 'МУЖЧИНАМ', 'ЖЕНЩИНАМ', 'ДЕТЯМ', 'НОВИНКИ'];
+                    - var link = ['#', '#', '#', '#', '#'];
+                        +top-menu(list, link)
+
+                .header__tools
+                    a(href="#").header__tools--link
+                        span.header__tools--icon
+                            img(src='img/icons/search-icon.png')
+                    a(href="#").header__tools--link
+                        span.header__tools--icon
+                            img(src='img/icons/heart-icon.png')
+                        span.header__tools--descr
+                            | Избранное: 1 товар
+                    a(href="#").header__tools--link
+                        span.header__tools--icon
+                            img(src='img/icons/bag-icon.png')
+                        span.header__tools--descr
+                            | корзина: 0 товаров
