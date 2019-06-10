@@ -17,7 +17,7 @@
       padding: 25px 0;
     }
 
-    @include breakpoint(max-width 660px) {
+    @include breakpoint(max-width 760px) {
       @include justify-content(center);
     }
   }
@@ -30,7 +30,7 @@
     height: 23px;
     overflow: hidden;
 
-    @include breakpoint(max-width 1024px) {
+    @include breakpoint(max-width 1200px) {
       width: 160px;
       height: 19px;
     }
@@ -53,7 +53,7 @@
     padding: 0;
     list-style: none;
 
-    @include breakpoint(max-width 660px) {
+    @include breakpoint(max-width 760px) {
       display: none;
     }
 
@@ -70,7 +70,7 @@
         font-size: 14px;
         text-transform: uppercase;
 
-        @include breakpoint(max-width 1024px) {
+        @include breakpoint(max-width 1200px) {
           font-size: 12px;
         }
       }
@@ -123,7 +123,7 @@
     @include justify-content(flex-start);
     width: calc(100% - (60px + 225px + 178px));
 
-    @include breakpoint(max-width 1024px) {
+    @include breakpoint(max-width 1200px) {
       width: calc(100% - (60px + 60px + 60px));
     }
   }
@@ -139,7 +139,7 @@
     padding: 0;
     list-style: none;
 
-    @include breakpoint(max-width 1200px) {
+    @include breakpoint(max-width 760px) {
       opacity: 0;
       left: -188px;
       position: absolute;
@@ -161,11 +161,11 @@
       height: 100%;
       margin-right: 60px;
 
-      //@include breakpoint(max-width 1024px) {
-      //  margin-right: 25px;
-      //}
-
       @include breakpoint(max-width 1200px) {
+        margin-right: 25px;
+      }
+
+      @include breakpoint(max-width 760px) {
         width: 100%;
         margin-right: 0;
       }
@@ -181,10 +181,6 @@
         font-size: 16px;
         font-family: $Lisa;
         text-transform: uppercase;
-
-        //@include breakpoint(max-width 990px) {
-        //  font-size: 12px;
-        //}
 
         @include breakpoint(max-width 1200px) {
           width: 100%;
@@ -207,7 +203,7 @@
     height: 100%;
     padding: 30px 10px;
 
-    @include breakpoint(max-width 1200px) {
+    @include breakpoint(max-width 760px) {
       display: block;
     }
 
