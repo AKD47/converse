@@ -32,7 +32,7 @@
     @include box-sizing(border-box);
     background-color: #fff;
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       width: calc(50% - 2px);
       width: -moz-calc(50% - 2px);
     }
@@ -73,7 +73,7 @@
     right: 0;
     top: 15%;
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       width: 100%;
       right: -70%;
     }
@@ -104,7 +104,7 @@
     padding: 0;
     list-style: none;
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       margin-top: 15px;
       margin-bottom: 15px;
       @include justify-content(flex-start);
@@ -116,7 +116,7 @@
       height: 70px;
       margin: 0 15px;
 
-      @include breakpoint(max-width 990px) {
+      @include breakpoint(max-width 1024px) {
         margin-left: 0;
       }
 
@@ -178,7 +178,7 @@
     position: relative;
     float: left;
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -211,7 +211,7 @@
       margin-top: 35px;
       margin-bottom: 0;
 
-      @include breakpoint(max-width 990px) {
+      @include breakpoint(max-width 1024px) {
         width: 70%;
       }
     }

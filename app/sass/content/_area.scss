@@ -23,7 +23,7 @@
     background-size: cover;
     background-color: #1d1d1d;
     
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       height: 470px;
       overflow: hidden;
       background-image: url('../img/map-tb.png');

@@ -13,7 +13,7 @@
     padding: 35px 0;
     @include box-sizing(border-box);
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       padding: 25px 0;
     }
 
@@ -30,7 +30,7 @@
     height: 23px;
     overflow: hidden;
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       width: 160px;
       height: 19px;
     }
@@ -70,7 +70,7 @@
         font-size: 14px;
         text-transform: uppercase;
 
-        @include breakpoint(max-width 990px) {
+        @include breakpoint(max-width 1024px) {
           font-size: 12px;
         }
       }
@@ -85,7 +85,7 @@
     font-weight: 400;
     text-transform: uppercase;
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       display: none;
     }
 
@@ -123,7 +123,7 @@
     @include justify-content(flex-start);
     width: calc(100% - (60px + 225px + 178px));
 
-    @include breakpoint(max-width 990px) {
+    @include breakpoint(max-width 1024px) {
       width: calc(100% - (60px + 60px + 60px));
     }
   }
@@ -139,7 +139,7 @@
     padding: 0;
     list-style: none;
 
-    @include breakpoint(max-width 660px) {
+    @include breakpoint(max-width 1200px) {
       opacity: 0;
       left: -188px;
       position: absolute;
@@ -161,7 +161,11 @@
       height: 100%;
       margin-right: 60px;
 
-      @include breakpoint(max-width 660px) {
+      //@include breakpoint(max-width 1024px) {
+      //  margin-right: 25px;
+      //}
+
+      @include breakpoint(max-width 1200px) {
         width: 100%;
         margin-right: 0;
       }
@@ -178,7 +182,11 @@
         font-family: $Lisa;
         text-transform: uppercase;
 
-        @include breakpoint(max-width 660px) {
+        //@include breakpoint(max-width 990px) {
+        //  font-size: 12px;
+        //}
+
+        @include breakpoint(max-width 1200px) {
           width: 100%;
           text-align: center;
           padding: 15px 0;
@@ -199,7 +207,7 @@
     height: 100%;
     padding: 30px 10px;
 
-    @include breakpoint(max-width 660px) {
+    @include breakpoint(max-width 1200px) {
       display: block;
     }
 
@@ -242,7 +250,7 @@
       font-size: 16px;
       text-transform: uppercase;
 
-      @include breakpoint(max-width 990px) {
+      @include breakpoint(max-width 1200px) {
         width: 60px;
       }
 
@@ -256,7 +264,7 @@
       padding-right: 0;
       width: 178px;
 
-      @include breakpoint(max-width 990px) {
+      @include breakpoint(max-width 1200px) {
         width: 60px;
       }
     }
@@ -284,7 +292,7 @@
       float: left;
       margin-left: 15px;
 
-      @include breakpoint(max-width 990px) {
+      @include breakpoint(max-width 1200px) {
         display: none;
       }
     }
@@ -308,7 +316,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
 
-      @include breakpoint(max-width 990px) {
+      @include breakpoint(max-width 1200px) {
         display: block;
       }
     }
